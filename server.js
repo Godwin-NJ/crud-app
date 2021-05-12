@@ -4,7 +4,6 @@ const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
 
 
-
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -25,7 +24,7 @@ app.use(cors());
 // })
 
 MongoClient.connect(
-  "mongodb+srv://amadi:amadi747@cluster0.bnf8r.mongodb.net/integral ltd?retryWrites=true&w=majority",
+  "mongodb+srv://amadi:amadi747@cluster0.bnf8r.mongodb.net/integral-data?retryWrites=true&w=majority",
   {
     useUnifiedTopology: true,
   }
