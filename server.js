@@ -50,7 +50,7 @@ MongoClient.connect(
         .find()
         .toArray()
         .then((results) => {
-          res.render("index.ejs", { data: results });
+          res.render('index.ejs', { data: results });
         })
         .catch((error) => console.error(error));
     });
