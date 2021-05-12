@@ -1,0 +1,50 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godwin-CrudApp</title>
+</head>
+
+<body>
+
+    <h2>Simple crud app created by Godwin, but still under development.</h2>
+    <form action="/data" method="POST" >
+        <input type="text" placeholder="name" name="name" required>
+        <input type="email" placeholder="email" name="email" required>
+        <input type="text" placeholder="country" name="country" required>
+        <button type="submit">Submit</button>
+    </form>
+
+        <h2>USER DATA</h2>
+            <ul>
+                <% for( let i=0; i < data.length; i++) {%>
+                    <li class="data">
+                        <span>
+                            <%= data[i].name %>
+                        </span> <br />
+                        <span>
+                            <%= data[i].email %>
+                        </span><br />
+                        <span>
+                            <%= data[i].country %>
+                        </span><br />
+                    </li>
+                   
+                    <% } %>
+                </ul>
+            <div>
+                <h2>Changes are Made here</h2>
+                <button id="update-button">Update data</button>
+                <button id="delete-button">Delete Data</button>
+            </div>
+           
+            <div id="message"></div>
+        
+        
+    <script src="/main.js"></script>
+</body>
+
+</html>
