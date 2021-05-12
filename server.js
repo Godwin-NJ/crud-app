@@ -14,14 +14,6 @@ app.use(express.static('public'))
 app.use(cors());
 
 
-// app.get('/', (req, res) => {
-//   res.json(database.data)
-// })
-
-
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/index.html')
-// })
 
 MongoClient.connect(
   "mongodb+srv://amadi:amadi747@cluster0.bnf8r.mongodb.net/integral-data?retryWrites=true&w=majority",
@@ -34,6 +26,16 @@ MongoClient.connect(
     const db = client.db("integral-data");
     const integraltable = db.collection("data");
 
+      app.get("/", (req, res) => {
+      db.collection("data")
+        .find()
+        .toArray()
+        .then((results) => {
+          res.render('index.ejs', { data: results });
+        })
+        .catch((error) => console.error(error));
+    });
+
     app.post("/data", (req, res) => {
       integraltable
         .insertOne(req.body)
@@ -45,15 +47,7 @@ MongoClient.connect(
         });
     });
 
-    app.get("/", (req, res) => {
-      db.collection("data")
-        .find()
-        .toArray()
-        .then((results) => {
-          res.render('index.ejs', { data: results });
-        })
-        .catch((error) => console.error(error));
-    });
+  
 
      app.put('/data', (req, res) => {
         integraltable.findOneAndUpdate(
@@ -75,10 +69,7 @@ MongoClient.connect(
         })
         .catch(error => console.error(error))
       })
-  //   app.put('/data', (req, res) => {
-  //   // res.json('hellow world')
-  //   console.log(req.body)
-  // })
+
       app.delete('/data', (req, res) => {
         console.log(req.body)
         integraltable.deleteOne(
