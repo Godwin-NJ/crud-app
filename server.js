@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
-const path = require('path');
+// const path = require('path');
 
 
 const app = express();
@@ -13,7 +13,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
-app.set('views', path.join(__dirname, '/views'))
+// app.set('views', path.join(__dirname, '/views'))
 app.use(cors());
 
 
@@ -29,9 +29,6 @@ MongoClient.connect(
     const db = client.db("integral-data");
     const integraltable = db.collection("data");
 
-    app.get('/', (req, res) => {
-      res.json('hello world')
-    })
 
       app.get("/", (req, res) => {
       db.collection("data")
