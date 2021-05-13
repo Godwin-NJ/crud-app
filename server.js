@@ -30,7 +30,7 @@ MongoClient.connect(
     const integraltable = db.collection("data");
 
     app.get('/', (req, res) => {
-      res.sendFile(__dirname + '/views')
+      res.json('hello world')
     })
 
       app.get("/", (req, res) => {
