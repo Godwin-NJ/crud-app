@@ -30,6 +30,8 @@ MongoClient.connect(
     const integraltable = db.collection("data");
 
 
+
+
       app.get("/", (req, res) => {
       db.collection("data")
         .find()
