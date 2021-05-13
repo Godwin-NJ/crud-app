@@ -29,6 +29,10 @@ MongoClient.connect(
     const db = client.db("integral-data");
     const integraltable = db.collection("data");
 
+    app.get('/', (req, res) => {
+      res.sendFile(__dirname + '/views')
+    })
+
       app.get("/", (req, res) => {
       db.collection("data")
         .find()
