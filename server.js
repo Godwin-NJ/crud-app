@@ -39,7 +39,7 @@ MongoClient.connect(
         .then((results) => {
           res.render('index.ejs', { data: results });
         })
-        .catch((error) => console.error('cannot get landing page'));
+        .catch((error) => console.error(`cannot get landing page, ${error}`));
     });
 
     app.post("/data", (req, res) => {
@@ -49,7 +49,7 @@ MongoClient.connect(
           res.redirect("/");
         })
         .catch((err) => {
-          console.error('cannot post data');
+          console.error(`cannot post data, ${err}`);
         });
     });
 
@@ -73,7 +73,7 @@ MongoClient.connect(
           res.json('Success')
           // console.log(result)
         })
-        .catch(error => console.error('cannt update data'))
+        .catch(error => console.error(`cannt update data,${error}`))
       })
 
       app.delete('/data', (req, res) => {
@@ -87,11 +87,11 @@ MongoClient.connect(
           }
           res.json(`Deleted Darth Vadar's data`)
         })
-        .catch(error => console.error('cannot delete data'))
+        .catch(error => console.error(`cannot delete data, ${error}`))
       })
 
     })
-  .catch((error) => { console.error('could not connect to mongodb", err')});
+  .catch((error) => { console.error(`cannot connect to mongodb, ${error}`)});
 
 
 
