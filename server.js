@@ -19,7 +19,7 @@ app.use(cors());
 
 
 MongoClient.connect(
-  "mongodb+srv://amadi:amadi747@cluster0.bnf8r.mongodb.net/integral-data?retryWrites=true&w=majority",
+  'mongodb+srv://amadi:amadi747@cluster0.bnf8r.mongodb.net/integral-data',
   {
     useUnifiedTopology: true,
   }
