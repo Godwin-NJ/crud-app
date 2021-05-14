@@ -39,7 +39,7 @@ MongoClient.connect(
         .then((results) => {
           res.render('index.ejs', { data: results });
         })
-        .catch((error) => console.error(error));
+        .catch((error) => console.error('cannot get landing page'));
     });
 
     app.post("/data", (req, res) => {
@@ -49,7 +49,7 @@ MongoClient.connect(
           res.redirect("/");
         })
         .catch((err) => {
-          console.error(err);
+          console.error('cannot post data');
         });
     });
 
@@ -73,7 +73,7 @@ MongoClient.connect(
           res.json('Success')
           // console.log(result)
         })
-        .catch(error => console.error(error))
+        .catch(error => console.error('cannt update data'))
       })
 
       app.delete('/data', (req, res) => {
@@ -87,7 +87,7 @@ MongoClient.connect(
           }
           res.json(`Deleted Darth Vadar's data`)
         })
-        .catch(error => console.error(error))
+        .catch(error => console.error('cannot delete data'))
       })
 
     })
